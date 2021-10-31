@@ -1,3 +1,2 @@
-# Syksy 2021
+# Ohjelmistotuotanto Syksy 2021 tehtävät
 
-Laskareissa käytettävä Python-koodi.
