@@ -1,2 +1,3 @@
-# ohtu2021-tehtavat
-Helsingin yliopiston Ohjelmistotuotanto syksy 2021 -kurssin tehtävät 
+# Syksy 2021
+
+Laskareissa käytettävä Python-koodi.
