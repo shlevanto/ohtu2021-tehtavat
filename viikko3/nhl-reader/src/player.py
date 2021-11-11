@@ -1,25 +1,3 @@
-import requests
-
-
-class PlayerReader:
-    def __init__(self, url):
-        self.response = requests.get(url).json()
-
-        print("JSON-muotoinen vastaus:")
-        print(self.response)
-
-        self.players = []
-
-        for player_dict in self.response:
-            player = Player(
-                player_dict
-            )
-
-        self.players.append(player)
-
-        return self.players
-
-
 class Player:
     def __init__(self, player_dict):
         self.name = player_dict['name']

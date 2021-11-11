@@ -1,5 +1,4 @@
-import requests
-from player import PlayerReader
+from player_reader import PlayerReader
 
 
 def main():
