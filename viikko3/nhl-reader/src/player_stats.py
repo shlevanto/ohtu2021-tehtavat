@@ -1,8 +1,11 @@
-from player_reader import PlayerReader
+class PlayerStats:
+    def __init__(self, reader):
+        self.reader = reader
 
+    def top_scorers_by_nationality(self, nationality):
+        players = self.reader.get_players()
 
-def __init__(self, reader):
-    self.reader = reader
+        players_f = [p for p in players if p.nationality == nationality]
+        players_f.sort(key=lambda x: x.goals + x.assists, reverse=True)
 
-def top_scores_by_nationality(self, nationality):
-    
+        return players_f

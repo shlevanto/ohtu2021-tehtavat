@@ -6,9 +6,6 @@ class PlayerReader:
     def __init__(self, url):
         self.response = requests.get(url).json()
 
-        print("JSON-muotoinen vastaus:")
-        print(self.response)
-
         self.players = []
 
         for player_dict in self.response:
@@ -16,7 +13,7 @@ class PlayerReader:
                 player_dict
             )
 
-        self.players.append(player)
+            self.players.append(player)
 
     def get_players(self):
         return self.players

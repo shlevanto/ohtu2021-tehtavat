@@ -1,16 +1,14 @@
 from player_reader import PlayerReader
+from player_stats import PlayerStats
 
 
 def main():
     url = "https://nhlstatisticsforohtu.herokuapp.com/players"
-    players = PlayerReader(url)    
-    #players.sort(key=lambda x: x.goals + x.assists, reverse=True)
+    reader = PlayerReader(url)
+    stats = PlayerStats(reader)
+    players = stats.top_scorers_by_nationality("FIN")
 
-    print("Oliot:")
-
-    for player in players:
-        if player.nationality == "FIN":
-            print(player)
+    [print(player) for player in players]
 
 
 if __name__ == "__main__":
