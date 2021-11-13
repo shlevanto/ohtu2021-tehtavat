@@ -40,17 +40,17 @@ class UserService:
 
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
         if len(re.findall(r'[^a-z]', username)) > 0:
-            raise UserInputError("Username can only contain characters a-z.")
+            raise UserInputError("Username can only contain characters a-z")
 
         if len(re.findall(r'[^a-z]', password)) == 0:
-            raise UserInputError("Password can not be only letters.")
+            raise UserInputError("Password can not be only letters")
 
         if len(username) < 3:
-            raise UserInputError("Username too short.")
+            raise UserInputError("Username too short")
 
         if len(password) < 8:
-            raise UserInputError("Password too short.")
+            raise UserInputError("Password too short")
 
         if self._user_repository.find_by_username(username) is not None:
-            raise UserInputError("This username is taken.")
+            raise UserInputError("This username is taken")
         
