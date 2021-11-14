@@ -9,7 +9,8 @@ ${DELAY}  0
 ${HOME URL}  http://${SERVER}
 ${LOGIN URL}  http://${SERVER}/login
 ${REGISTER URL}  http://${SERVER}/register
-${WELCOME PAGE}  http://${SERVER}/welcome
+${WELCOME URL}  http://${SERVER}/welcome
+
 
 *** Keywords ***
 Open And Configure Browser
@@ -37,3 +38,4 @@ Go To Main Page
 
 Go To Register Page
     Go To  ${REGISTER URL}
+

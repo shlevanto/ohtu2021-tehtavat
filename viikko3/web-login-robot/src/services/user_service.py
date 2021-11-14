@@ -58,7 +58,7 @@ class UserService:
             raise UserInputError("This username is taken")
 
         if password != password_confirmation:
-            raise UserInputError("Password and confifmation do not match")
+            raise UserInputError("Password and confirmation do not match")
 
 
 user_service = UserService()
