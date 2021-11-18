@@ -92,3 +92,17 @@ class TestKauppa(unittest.TestCase):
         self.pankki_mock.tilisiirto.assert_called_with(
             "pekka", 42, "12345", ANY, 5
             )
+
+    def test_varmista_etta_aloita_asiointi_nollaa_ostoskorin(self):
+        # tehdään ostokset
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+        
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+        
+        self.pankki_mock.tilisiirto.assert_called_with(
+            "pekka", 42, "12345", ANY, 5
+            )
