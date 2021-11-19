@@ -28,11 +28,16 @@ class TestKauppa(unittest.TestCase):
                 return Tuote(2, "bisse", 4)
             if tuote_id == 3:
                 return Tuote(3, "vessapaperi", 10)   
-            
+        
+        # toteutus varastoon palauttamiselle
+        def varasto_palauta_tuote(tuote_id):
+            return 1
+        
         # otetaan toteutukset käyttöön
         self.varasto_mock.saldo.side_effect = varasto_saldo
         self.varasto_mock.hae_tuote.side_effect = varasto_hae_tuote
-
+        self.varasto_mock.palauta_varastoon.side_effect = varasto_palauta_tuote
+        
         # alustetaan kauppa
         self.kauppa = Kauppa(self.varasto_mock, self.pankki_mock, self.viitegeneraattori_mock)
 
@@ -106,3 +111,11 @@ class TestKauppa(unittest.TestCase):
         self.pankki_mock.tilisiirto.assert_called_with(
             "pekka", 42, "12345", ANY, 5
             )
+        
+    def test_ostoskorista_poistettu_tuote_palautuu_varastoon(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.poista_korista(1)
+
+        self.varasto_mock.ota_varastosta.assert_called()
+        self.varasto_mock.palauta_varastoon.assert_called()
