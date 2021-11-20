@@ -3,6 +3,8 @@ from ostoskori import Ostoskori
 from tuote import Tuote
 
 bisse = Tuote('Bisse', 3)
+sipsit = Tuote('Sipsit', 2)
+
 
 class TestOstoskori(unittest.TestCase):
     def setUp(self):
@@ -47,3 +49,12 @@ class TestOstoskori(unittest.TestCase):
         ostos = self.kori.ostokset()[0]
         
         self.assertAlmostEqual(ostos.tuotteen_nimi(), 'Bisse')
+        self.assertAlmostEqual(ostos.lukumaara(), 1)
+
+    def test_kahden_eri_tuotteen_lisaamisen_jalkeen_ostoskori_sisaltaa_kaksi_ostosta(self):
+        self.kori.lisaa_tuote(bisse)
+        self.kori.lisaa_tuote(sipsit)
+        
+        ostokset = self.kori.ostokset()
+        
+        self.assertEqual(len(ostokset), 2)
