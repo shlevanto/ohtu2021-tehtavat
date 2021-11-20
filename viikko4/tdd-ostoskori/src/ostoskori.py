@@ -27,6 +27,7 @@ class Ostoskori:
         else:
             self.korin_ostokset.append(ostos)
         
+        self.korin_hinta = ostos.hinta()
         
 
     def poista_tuote(self, poistettava: Tuote):
