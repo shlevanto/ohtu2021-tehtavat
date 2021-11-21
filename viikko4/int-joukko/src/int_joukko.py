@@ -56,6 +56,7 @@ class IntJoukko:
 
         for alkio in self.ljono:
             if alkio == n:
+
                 print(kohta)
                 break
             kohta += 1
@@ -79,15 +80,26 @@ class IntJoukko:
 
     @staticmethod
     def leikkaus(a, b):
+<<<<<<< HEAD
         for alkio in a.to_int_list():
             if not b.kuuluu(alkio):
                 a.poista(alkio)
+=======
+        for i in a.to_int_list():
+            if not b.kuuluu(i):
+                a.poista(i)
+>>>>>>> aae1a485592fecc2328fcb18e707dfc6f848fb26
         return a
 
     @staticmethod
     def erotus(a, b):
+<<<<<<< HEAD
         for alkio in b.to_int_list():
             a.poista(alkio)
+=======
+        for i in b.to_int_list():
+            a.poista(i)
+>>>>>>> aae1a485592fecc2328fcb18e707dfc6f848fb26
         return a
 
     def __str__(self):
