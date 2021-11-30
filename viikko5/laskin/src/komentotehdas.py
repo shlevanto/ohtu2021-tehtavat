@@ -1,12 +1,15 @@
-
-
 class Summa:
     def __init__(self, sovellus, io):
         self.io = io
         self.sovellus = sovellus
 
     def suorita(self):
+        self.alkuarvo = self.sovellus.tulos
+        print(self.alkuarvo)
         return self.sovellus.plus(self.io())
+    
+    def kumoa(self):
+        return self.alkuarvo
 
 class Erotus:
     def __init__(self, sovellus, io):
