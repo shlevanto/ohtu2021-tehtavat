@@ -5,23 +5,22 @@ class Summa:
         self.io = io
         self.sovellus = sovellus
 
-    def suorita(self, arvo):
-        return self.sovellus.plus(arvo)
+    def suorita(self):
+        return self.sovellus.plus(self.io())
 
 class Erotus:
     def __init__(self, sovellus, io):
         self.io = io
         self.sovellus = sovellus
 
-    def suorita(self, arvo):
-        return self.sovellus.miinus(arvo)
+    def suorita(self):
+        return self.sovellus.miinus(self.io())
 
 class Nollaus:
-    def __init__(self, sovellus, io):
-        self.io = io
+    def __init__(self, sovellus):
         self.sovellus = sovellus
 
-    def suorita(self, arvo):
+    def suorita(self):
         return self.sovellus.nollaa()
 
 class Kumoa:

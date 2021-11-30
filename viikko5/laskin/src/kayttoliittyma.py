@@ -17,7 +17,7 @@ class Kayttoliittyma:
         self._komennot = {
             Komento.SUMMA: Summa(sovellus, self._lue_syote),
             Komento.EROTUS: Erotus(sovellus, self._lue_syote),
-            Komento.NOLLAUS: Nollaus(sovellus, self._lue_syote),
+            Komento.NOLLAUS: Nollaus(sovellus),
             Komento.KUMOA: Kumoa(sovellus, self._lue_syote)
         }
 
@@ -65,27 +65,10 @@ class Kayttoliittyma:
         return int(self._syote_kentta.get())
 
     def _suorita_komento(self, komento):
-        arvo = 0
-
-        try:
-            arvo = int(self._syote_kentta.get())
-        except Exception:
-            pass
         
         komento_olio = self._komennot[komento]
-        komento_olio.suorita(arvo)
+        komento_olio.suorita()
         
-        
-        '''
-        if komento == Komento.SUMMA:
-            self._sovellus.plus(arvo)
-        elif komento == Komento.EROTUS:
-            self._sovellus.miinus(arvo)
-        elif komento == Komento.NOLLAUS:
-            self._sovellus.nollaa()
-        elif komento == Komento.KUMOA:
-            pass
-        '''
         self._kumoa_painike["state"] = constants.NORMAL
 
         if self._sovellus.tulos == 0:
