@@ -1,25 +1,28 @@
 
 
 class Summa:
-    def __init__(self, sovellus, syote):
+    def __init__(self, sovellus, io):
+        self.io = io
         self.sovellus = sovellus
-        self.syote = syote
-        
-    def suorita(self):
-        print(self.syote)
-        #return self.sovellus.plus(self.syote)
+
+    def suorita(self, arvo):
+        return self.sovellus.plus(arvo)
 
 class Erotus:
-    def __init__(self, sovellus, syote):
-        pass
-    def suorita(self, sovellus, syote):
-        return sovellus.miinus(syote)
+    def __init__(self, sovellus, io):
+        self.io = io
+        self.sovellus = sovellus
+
+    def suorita(self, arvo):
+        return self.sovellus.miinus(arvo)
 
 class Nollaus:
-    def __init__(self, sovellus, syote):
-        pass
-    def suorita(self, sovellus, syote):
-        return sovellus.nollaa(syote)
+    def __init__(self, sovellus, io):
+        self.io = io
+        self.sovellus = sovellus
+
+    def suorita(self, arvo):
+        return self.sovellus.nollaa()
 
 class Kumoa:
     def __init__(self, sovellus, syote):
