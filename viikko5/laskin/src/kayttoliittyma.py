@@ -13,6 +13,7 @@ class Kayttoliittyma:
     def __init__(self, sovellus, root):
         self._sovellus = sovellus
         self._root = root
+        self.komento_olio = None
         
         self._komennot = {
             Komento.SUMMA: Summa(sovellus, self._lue_syote),
@@ -66,8 +67,12 @@ class Kayttoliittyma:
 
     def _suorita_komento(self, komento):
         
-        komento_olio = self._komennot[komento]
-        komento_olio.suorita()
+        if komento == Komento.KUMOA:
+            self.komento_olio.kumoa()    
+        
+        else: 
+            self.komento_olio = self._komennot[komento]
+            self.komento_olio.suorita()
         
         self._kumoa_painike["state"] = constants.NORMAL
 
