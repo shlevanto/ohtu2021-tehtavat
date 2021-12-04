@@ -34,3 +34,20 @@ class Not:
         if not self._matcher.matches(player):
             return True
         return False
+
+class All:
+    def __init__(self, *matchers):
+        self._matchers = matchers
+        
+    def matches(self, player):
+        for matcher in self._matchers:
+            return True
+    
+class HasFewerThan:
+    def __init__(self, value, attr):
+        self._value = value
+        self._attr = attr
+    def matches(self, player):
+        player_value = getattr(player, self._attr)
+        return player_value < self._value
+        
