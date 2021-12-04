@@ -1,7 +1,11 @@
 from enum import Enum
 from tkinter import ttk, constants, StringVar
+<<<<<<< HEAD
 from sovelluslogiikka import Summa, Erotus, Nollaus, Kumoa
 
+=======
+from komentotehdas import Summa, Erotus, Nollaus, Kumoa
+>>>>>>> 014c370e20febd2e35cf8080c73da3ff38d106d6
 
 class Komento(Enum):
     SUMMA = 1
@@ -14,6 +18,7 @@ class Kayttoliittyma:
     def __init__(self, sovellus, root):
         self._sovellus = sovellus
         self._root = root
+<<<<<<< HEAD
         self._komennot = {
             Komento.SUMMA: Summa(sovellus, self._lue_syote),
             Komento.EROTUS: Erotus(sovellus, self._lue_syote),
@@ -21,6 +26,17 @@ class Kayttoliittyma:
             Komento.KUMOA: Kumoa(sovellus, self._lue_syote())
         }
         
+=======
+        self.komento_olio = None
+        
+        self._komennot = {
+            Komento.SUMMA: Summa(sovellus, self._lue_syote),
+            Komento.EROTUS: Erotus(sovellus, self._lue_syote),
+            Komento.NOLLAUS: Nollaus(sovellus),
+            Komento.KUMOA: Kumoa(sovellus, self._lue_syote)
+        }
+
+>>>>>>> 014c370e20febd2e35cf8080c73da3ff38d106d6
     def kaynnista(self):
         self._tulos_var = StringVar()
         self._tulos_var.set(self._sovellus.tulos)
@@ -65,8 +81,18 @@ class Kayttoliittyma:
         return int(self._syote_kentta.get())
 
     def _suorita_komento(self, komento):
+<<<<<<< HEAD
         komento_olio = self._komennot[komento]
         komento.olio.suorita()        
+=======
+        
+        if komento == Komento.KUMOA:
+            self.komento_olio.kumoa()    
+        
+        else: 
+            self.komento_olio = self._komennot[komento]
+            self.komento_olio.suorita()
+>>>>>>> 014c370e20febd2e35cf8080c73da3ff38d106d6
         
         self._kumoa_painike["state"] = constants.NORMAL
 
