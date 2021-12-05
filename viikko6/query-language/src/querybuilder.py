@@ -11,11 +11,14 @@ class QueryBuilder:
     def build(self):
         return self._matcher  
 
-    def plays_in(self, team):
+    def playsIn(self, team):
         return QueryBuilder(And(self._matcher, PlaysIn(team)))
 
-    def has_at_least(self, value, attr):
+    def hasAtLeast(self, value, attr):
         return QueryBuilder(And(self._matcher, HasAtLeast(value, attr)))
 
-    def has_fewer_than(self, value, attr):
+    def hasFewerThan(self, value, attr):
         return QueryBuilder(And(self._matcher, HasFewerThan(value, attr)))
+    
+    def oneOf(self, *matchers):
+        return QueryBuilder(Or(*matchers))
